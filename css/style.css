@@ -1,0 +1,43 @@
+body{
+  background-color: #006927;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+.rowone {
+  height: 100px;
+  width: 300px;
+  border: white solid 1px;
+}
+
+.rowtwo {
+  height: 100px;
+  width: 300px;
+  border: white solid 1px;
+}
+.rowthree {
+  height: 100px;
+  width: 300px;
+  border: white solid 1px;
+}
+.rowonesquareone {
+  height: 30px;
+  background-color:white;
+  float:left;
+   width: 33.33%;
+}
+.rowonesquaretwo {
+  height: 30px;
+background-color:white;
+  float:left;
+   width: 33.33%;
+}
+.rowoneesquarethree {
+  height: 30px;
+background-color: white;
+  float:right;
+   width: 33.33%;
+}
