@@ -7,37 +7,20 @@ h1 {
   text-align: center;
 }
 
-.rowone {
+.row {
   height: 100px;
   width: 300px;
   border: white solid 1px;
 }
 
-.rowtwo {
-  height: 100px;
-  width: 300px;
-  border: white solid 1px;
-}
-.rowthree {
-  height: 100px;
-  width: 300px;
-  border: white solid 1px;
-}
-.rowonesquareone {
-  height: 30px;
+
+.square {
+  height: 99px;
+  width: 98px;
   background-color:white;
   float:left;
-   width: 33.33%;
+  border: black solid 1px;
 }
-.rowonesquaretwo {
-  height: 30px;
-background-color:white;
-  float:left;
-   width: 33.33%;
-}
-.rowoneesquarethree {
-  height: 30px;
-background-color: white;
-  float:right;
-   width: 33.33%;
+.game {
+  
 }
