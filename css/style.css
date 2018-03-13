@@ -22,5 +22,12 @@ h1 {
   border: black solid 1px;
 }
 .game {
-  
+
+}
+button {
+  color: white;
+  background-color: black;
+  width: 90px;
+  height: 30px;
+  margin-top: 20px;
 }
