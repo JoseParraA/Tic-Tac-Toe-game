@@ -5,6 +5,11 @@ body{
 h1 {
   color: white;
   text-align: center;
+  text-decoration: underline;
+}
+main {
+  align-items:
+  
 }
 
 .row {
@@ -20,14 +25,29 @@ h1 {
   background-color:white;
   float:left;
   border: black solid 1px;
+  text-align: center;
+  text-shadow: 2px 2px 8px #022F00;
+  font-size: 60px;
+  font-weight: bold;
+
 }
 .game {
-
+ padding-left: 10px;
+ align-items: center;
 }
 button {
   color: white;
-  background-color: black;
+  background-color: #022F00;
   width: 90px;
   height: 30px;
   margin-top: 20px;
+}
+
+.playerX, .playerO {
+  font-size: 20px;
+  padding-left: 10px;
+  display: inline-block;
+}
+.newGame, .restart {
+  display:inline-block;
 }

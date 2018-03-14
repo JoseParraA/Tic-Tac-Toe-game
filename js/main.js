@@ -1,11 +1,12 @@
 $(document).ready(function() {
 
 
-
 let score = {
   X: 0,
   O: 0
 };
+//displayObject('O', score.O);
+
 
 
 
@@ -23,50 +24,11 @@ let winCombinations = [
 ];
 let playerTurn = '';
 let turn = 0;
-// let chosenArray = [];
-// let chosenSquare;
-
-let playGame = function () {
-  let num = parseInt(this.id);
-  console.log(num);
-  indexNum(num)
-  winner();
-};
+gameOver = false;
 
 
-
-
-const winner = function () {
-if (
-      (gameOutcome[0] === 'X' && gameOutcome[1] === 'X' && gameOutcome[2] === 'X')||
-      (gameOutcome[3] === 'X' && gameOutcome[4] === 'X' && gameOutcome[5] ==='X')||
-      (gameOutcome[6] === 'X' && gameOutcome[7] === 'X' && gameOutcome[8] ==='X')||
-      (gameOutcome[0] === 'X' && gameOutcome[4] === 'X' && gameOutcome[8] ==='X')||
-      (gameOutcome[0] === 'X' && gameOutcome[3] === 'X' && gameOutcome[6] ==='X')||
-      (gameOutcome[1] === 'X' && gameOutcome[4] === 'X' && gameOutcome[7] ==='X')||
-      (gameOutcome[2] === 'X' && gameOutcome[5] === 'X' && gameOutcome[8] ==='X')||
-      (gameOutcome[2] === 'X' && gameOutcome[4] === 'X' && gameOutcome[6] ==='X')
-) {
-  console.log('Player 1 win!');
-} else if (
-      (gameOutcome[0] === 'O' && gameOutcome[1] === 'O' && gameOutcome[2] === 'O')||
-      (gameOutcome[3] === 'O' && gameOutcome[4] === 'O' && gameOutcome[5] ==='O')||
-      (gameOutcome[6] === 'O' && gameOutcome[7] === 'O' && gameOutcome[8] ==='O')||
-      (gameOutcome[0] === 'O' && gameOutcome[4] === 'O' && gameOutcome[8] ==='O')||
-      (gameOutcome[0] === 'O' && gameOutcome[3] === 'O' && gameOutcome[6] ==='O')||
-      (gameOutcome[1] === 'O' && gameOutcome[4] === 'O' && gameOutcome[7] ==='O')||
-      (gameOutcome[2] === 'O' && gameOutcome[5] === 'O' && gameOutcome[8] ==='O')||
-      (gameOutcome[2] === 'O' && gameOutcome[4] === 'O' && gameOutcome[6] ==='O')
-) {
-  console.log('Player 2 win!');
-}
-};
-
-
-
-
-// PLAYER TURN//////////////////////////////////////////
-function indexNum(num){
+//////////////////////////////////////////////////////////// PLAYER TURN//////////////////////////////////////////
+function indexNum(num, choosenSquare){
 
   if (turn % 2 === 0) {
     playerTurn = 'X';
@@ -78,50 +40,99 @@ function indexNum(num){
     console.log('Player 2');
   }
 
-////STORE THE INDEX IN THE ARRAY//////////////////
+/////////////////////////////////////////////////STORE THE INDEX IN THE ARRAY//////////////////
 
   gameOutcome.splice(num, 1, playerTurn)
   console.log(gameOutcome)
+  choosenSquare.text(playerTurn)
   turn +=1
+
 }
+
+
+/////////////////////////////////////////////////////////////PLAY GAME/////////
+
+
+let playGame = function () {
+  if (gameOver === false ) {
+    let num = parseInt(this.id);
+    let choosenSquare = $(this)
+    console.log(choosenSquare);
+    if (gameOutcome[num] ==='X' || gameOutcome[num] === 'O') {
+      console.log('this position is taken');
+      return
+    }
+
+    console.log(num);
+    indexNum(num, choosenSquare)
+    winner();
+  }
+};
+////////////////////////////////////////////////////////////
 
 $('.square').on('click', playGame);
 
-
-//////CHECK FOR WINNER/////////////////////////////
-
-
-  for (let i = 0; i < winCombinations.length; i++) {
-    let winCombination = winCombinations[i];
-    for (let j = 0; j < winCombination.length; j++) {
-    console.log(winCombinations[i][j]);
-
-
-
-    // if (indexOf.gameOutcome === winCombinations[i][j]) {
-    //   console.log('urra')
-    }
-  };
-
-
-  //   let c1 = winCombinations[0];
-  //   let c2 = winCombinations[1];
-  //   let c3 = winCombinations[2];
-  //
-  // gameOutcome[c1] == gameOutcome[c2] && gameOutcome[c2] == gameOutcome[c3]
-
-
-
-//////RESET THE GAME WHEN SOMEONE PRESS RESTART//////////////////
-
-let restart = function () {
-  turn = 0;
-  gameOutcome = [ '_' , '_' , '_' , '_' , '_' , '_' , '_' , '_' , '_' ];
+///////////////////////////////////////////////////////////
+const winner = function () {
+if (
+      (gameOutcome[0] === 'X' && gameOutcome[1] === 'X' && gameOutcome[2] === 'X')||
+      (gameOutcome[3] === 'X' && gameOutcome[4] === 'X' && gameOutcome[5] ==='X')||
+      (gameOutcome[6] === 'X' && gameOutcome[7] === 'X' && gameOutcome[8] ==='X')||
+      (gameOutcome[0] === 'X' && gameOutcome[4] === 'X' && gameOutcome[8] ==='X')||
+      (gameOutcome[0] === 'X' && gameOutcome[3] === 'X' && gameOutcome[6] ==='X')||
+      (gameOutcome[1] === 'X' && gameOutcome[4] === 'X' && gameOutcome[7] ==='X')||
+      (gameOutcome[2] === 'X' && gameOutcome[5] === 'X' && gameOutcome[8] ==='X')||
+      (gameOutcome[2] === 'X' && gameOutcome[4] === 'X' && gameOutcome[6] ==='X')
+) {
+          console.log('Player 1 win!');
+          score.X += 1;
+          console.log(score);
+          gameOver = true;
+} else if (
+      (gameOutcome[0] === 'O' && gameOutcome[1] === 'O' && gameOutcome[2] === 'O')||
+      (gameOutcome[3] === 'O' && gameOutcome[4] === 'O' && gameOutcome[5] ==='O')||
+      (gameOutcome[6] === 'O' && gameOutcome[7] === 'O' && gameOutcome[8] ==='O')||
+      (gameOutcome[0] === 'O' && gameOutcome[4] === 'O' && gameOutcome[8] ==='O')||
+      (gameOutcome[0] === 'O' && gameOutcome[3] === 'O' && gameOutcome[6] ==='O')||
+      (gameOutcome[1] === 'O' && gameOutcome[4] === 'O' && gameOutcome[7] ==='O')||
+      (gameOutcome[2] === 'O' && gameOutcome[5] === 'O' && gameOutcome[8] ==='O')||
+      (gameOutcome[2] === 'O' && gameOutcome[4] === 'O' && gameOutcome[6] ==='O')
+) {
+          console.log('Player 2 win!');
+          score.O += 1;
+          console.log(score);
+          gameOver = true;
+}
 };
 
-$('.restart').on('click',restart)
+
+///////////////////////////////////////RESET THE GAME WHEN SOMEONE PRESS RESTART//////////////////
+
+let nextRound = function () {
+  turn = 0;
+  gameOutcome = [ '_' , '_' , '_' , '_' , '_' , '_' , '_' , '_' , '_' ];
+  gameOver = false;
+
+  $('.square').text('');
+};
 
 
+$('.restart').on('click',nextRound)
+
+
+/////////////////////////////////////////////////////////////////NEW GAME BUTTON////////
+
+let newGame = function () {
+  turn = 0;
+  gameOutcome = [ '_' , '_' , '_' , '_' , '_' , '_' , '_' , '_' , '_' ];
+  gameOver = false;
+  score = {
+    X: 0,
+    O: 0
+  };
+  $('.square').text('');
+}
+$('.newGame').on('click',newGame)
 
 });
 // PLAYER TURN//////////////////////////////////////////
@@ -167,3 +178,24 @@ $('.restart').on('click',restart)
 //   }
 // };
 // play(chosenArray);
+
+//////////////////////////////////////////////////////////////////
+// $('.square').on('click', function() { //it is to click in every object in that array
+//       //checking weather the class player 1 or player 2 is added to see if the box is already taken
+//       if (gameOver === false) { //to check if anyone won and stop the game
+//           if ($(this).hasClass("player1") || $(this).hasClass("player2")) {
+//               console.log('not in this box');
+//           } else {
+//               //because the box is not taken you can add a class to take it
+//               //============== adding class to the div
+//               $(this).addClass(playerTurn);
+//               $(this).css("background-image", "url('" + playerImage[playerTurn] + "')");
+//
+//               // this is taking one object with the class square any time you click, before I tryed with .square instead of this and it added the class player 1 in all the divs
+//               //============check winner with a function
+//               checkWinner();
+//               //==========to check the turn
+//               newTurn();
+//           }
+//       }
+//   });
