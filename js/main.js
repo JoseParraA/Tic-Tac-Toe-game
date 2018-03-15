@@ -1,17 +1,23 @@
 $(document).ready(function() {
 
+  let playerOneName = "Player X"
+  let playerTwoName = "Player O"
 
-let score = {
+
+    $('#xSubmit').on('click', function() {   //Add Name to X Player
+    playerOneName = $('#nameX').val()
+    $('#X').html(playerOneName + ' ' + score.X);
+    })
+    $('#oSubmit').on('click',function() {    // Add Name to O Player
+    playerTwoName = $('#nameY').val()
+    $('#O').html(playerTwoName + ' ' + score.X);
+    });
+
+let score = {         //Keep the score during the macth
   X: 0,
   O: 0
 };
-//displayObject('O', score.O);
-
-
-
-
 let gameOutcome = [ '_' , '_' , '_' , '_' , '_' , '_' , '_' , '_' , '_' ];
-
 let winCombinations = [
   [0, 1, 2],
   [3, 4, 5],
@@ -30,35 +36,34 @@ gameOver = false;
 //////////////////////////////////////////////////////////// PLAYER TURN//////////////////////////////////////////
 function indexNum(num, choosenSquare){
 
-  if (turn % 2 === 0) {
-    playerTurn = 'X';
-
+  if (turn % 2 === 0) {             //Change turn every time one square is taken
+    playerTurn = 'X';               //Player 1 goes
     console.log('Player 1');
-  } else if (turn % 2 !== 0) {
-    playerTurn = 'O';    //Player 1 goes
 
+  } else if (turn % 2 !== 0) {
+    playerTurn = 'O';               //Player 2 goes
     console.log('Player 2');
   }
 
 /////////////////////////////////////////////////STORE THE INDEX IN THE ARRAY//////////////////
 
-  gameOutcome.splice(num, 1, playerTurn)
+  gameOutcome.splice(num, 1, playerTurn) //Add a X or an O in the empty array
   console.log(gameOutcome)
-  choosenSquare.text(playerTurn)
+  choosenSquare.text(playerTurn)         //Add a X or an O inthe variable playerTurn
   turn +=1
 
 }
 
 
-/////////////////////////////////////////////////////////////PLAY GAME/////////
+/////////////////////////////////////////////////////////////PLAY GAME/////////////////////////
 
 
 let playGame = function () {
-  if (gameOver === false ) {
-    let num = parseInt(this.id);
-    let choosenSquare = $(this)
+  if (gameOver === false ) { //Check that game over is false first
+    let num = parseInt(this.id);   //Change the string into a number
+    let choosenSquare = $(this)     //Give choosenSquare same value to exprt outside of the function
     console.log(choosenSquare);
-    if (gameOutcome[num] ==='X' || gameOutcome[num] === 'O') {
+    if (gameOutcome[num] ==='X' || gameOutcome[num] === 'O') {     //Check if thr square is already taken
       console.log('this position is taken');
       return
     }
@@ -68,11 +73,11 @@ let playGame = function () {
     winner();
   }
 };
-////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////Click on any square///////
 
 $('.square').on('click', playGame);
 
-///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////Check for a winner
 const winner = function () {
 if (
       (gameOutcome[0] === 'X' && gameOutcome[1] === 'X' && gameOutcome[2] === 'X')||
@@ -86,6 +91,7 @@ if (
 ) {
           console.log('Player 1 win!');
           score.X += 1;
+          $('#X').html(playerOneName + ' ' + score.X);      //Update the score
           console.log(score);
           gameOver = true;
 } else if (
@@ -100,19 +106,19 @@ if (
 ) {
           console.log('Player 2 win!');
           score.O += 1;
+          $('#O').html(playerTwoName + ' ' + score.O);       //Update the score
           console.log(score);
           gameOver = true;
 }
 };
 
 
-///////////////////////////////////////RESET THE GAME WHEN SOMEONE PRESS RESTART//////////////////
+///////////////////////////////////////RESET THE GAME WHEN SOMEONE PRESS BUTTON RESTART//////////////////
 
 let nextRound = function () {
   turn = 0;
   gameOutcome = [ '_' , '_' , '_' , '_' , '_' , '_' , '_' , '_' , '_' ];
   gameOver = false;
-
   $('.square').text('');
 };
 
@@ -131,10 +137,18 @@ let newGame = function () {
     O: 0
   };
   $('.square').text('');
+  $('#X').html('Player X: ' + score.X);
+  $('#O').html('Player O: ' + score.O);
+
+
 }
 $('.newGame').on('click',newGame)
 
 });
+
+
+
+
 // PLAYER TURN//////////////////////////////////////////
 
 // const newTurn = function (turn) {
@@ -159,43 +173,3 @@ $('.newGame').on('click',newGame)
 // });
 
 ////////////////////////////////////////////////////////TEST//////
-
-// let play = function (chosenArray) {
-//   if (turn < 9) {
-// console.log(chosenArray);
-//     for (var i = 0; i < winCombinations.length; i++) {
-//
-//       matchedMoves = 0;
-//       // console.log('hola');
-//       for (var j = 0; j < chosenArray.length; j++) {
-//
-//         if (winCombinations[i][j] === chosenArray[j]) {
-// console.log('is');
-//         return matchedMoves += 1
-//         }
-//       }
-//     }
-//   }
-// };
-// play(chosenArray);
-
-//////////////////////////////////////////////////////////////////
-// $('.square').on('click', function() { //it is to click in every object in that array
-//       //checking weather the class player 1 or player 2 is added to see if the box is already taken
-//       if (gameOver === false) { //to check if anyone won and stop the game
-//           if ($(this).hasClass("player1") || $(this).hasClass("player2")) {
-//               console.log('not in this box');
-//           } else {
-//               //because the box is not taken you can add a class to take it
-//               //============== adding class to the div
-//               $(this).addClass(playerTurn);
-//               $(this).css("background-image", "url('" + playerImage[playerTurn] + "')");
-//
-//               // this is taking one object with the class square any time you click, before I tryed with .square instead of this and it added the class player 1 in all the divs
-//               //============check winner with a function
-//               checkWinner();
-//               //==========to check the turn
-//               newTurn();
-//           }
-//       }
-//   });

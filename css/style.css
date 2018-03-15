@@ -1,21 +1,21 @@
 body{
   background-color: #006927;
+
 }
 
 h1 {
   color: white;
+  font-size: 50px;
   text-align: center;
   text-decoration: underline;
-}
-main {
-  align-items:
-  
+  text-shadow: 2px 2px 8px #022F00;
 }
 
 .row {
   height: 100px;
   width: 300px;
   border: white solid 1px;
+  margin: auto;
 }
 
 
@@ -33,14 +33,17 @@ main {
 }
 .game {
  padding-left: 10px;
- align-items: center;
 }
 button {
   color: white;
+  font-size: 20px;
   background-color: #022F00;
-  width: 90px;
-  height: 30px;
-  margin-top: 20px;
+  width: 160px;
+  height: 50px;
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .playerX, .playerO {
@@ -48,6 +51,9 @@ button {
   padding-left: 10px;
   display: inline-block;
 }
-.newGame, .restart {
-  display:inline-block;
+.score {
+  margin-left :50px;
+  margin-right: 50px;
+  height: 10px;
+  justify-content: space-between;
 }

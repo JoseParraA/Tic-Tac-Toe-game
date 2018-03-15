@@ -14,8 +14,15 @@
 
   <body>
     <h1> Tic Tac Toe</h1>
-
   <main>
+      <!--Players names!-->
+    <div class="score">
+      <p class='playerX' id='X'>Player X:</p>
+      <p class='playerO' id='O'>Player O:</p>
+    </div>
+
+    <!--Board!-->
+
   <div class = 'game'>
       <div class = 'row'>
 
@@ -39,36 +46,33 @@
       </div>
   </div>
 
+  <!--Next Round button!-->
+
   <div class='restart' id= 'restart'>
     <button type="button">Next Round</button>
   </div>
+
+  <!--Restart button!-->
 
   <div class='newGame' id= 'newGame'>
     <button type="button">New Game</button>
   </div>
 
-  <div class="score">
+  <!--Name input and score X!-->
 
-    <p class='playerX' id='X'>PLAYER X:</p>
-
-    <p class='playerO' id='O'>PLAYER O:</p>
-
+  <div class = 'scorebox'>
+    Name X: <input id="nameX" type="text" name="fname"><br>
+    <input  id="xSubmit" type="submit" value="Submit">
   </div>
 
+<!--Name input and score O!-->
 
-
-  <form action="/action_page.php">
-    Name: <input type="text" name="fname"><br>
-    <input type="submit" value="Submit">
-  </form>
-
-  <form action="/action_page.php">
-    Name: <input type="text" name="fname"><br>
-    <input type="submit" value="Submit">
-  </form>
+  <div class = 'scorebox'>
+    Name O: <input id="nameY" type="text" name="fname"><br>
+    <input id="oSubmit" type="submit" value="Submit">
+  </div>
 
   </main>
-
 
 
 
