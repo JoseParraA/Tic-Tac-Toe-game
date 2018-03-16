@@ -73,7 +73,7 @@ let playGame = function () {
     winner();
   }
 };
-//////////////////////////////////////////////////////Click on any square///////
+////////////////////////////////////////////////Click on any square event///////
 
 $('.square').on('click', playGame);
 
@@ -89,12 +89,12 @@ if (
     (gameOutcome[2] === 'X' && gameOutcome[5] === 'X' && gameOutcome[8] ==='X')||
     (gameOutcome[2] === 'X' && gameOutcome[4] === 'X' && gameOutcome[6] ==='X')
 ) {
-          score.X += 1;
-          if (score.X === 3) {
-              window.alert(`${playerOneName} wins the match, press New Game to play again`);
-              };////Alert Box
+      score.X += 1;
+      if (score.X === 3) {
+          window.alert(`${playerOneName} wins the match, press New Game to play again`);
+          };////Alert Box
 
-          $('#X').html(playerOneName + ' ' + score.X);      //Update the score
+      $('#X').html(playerOneName + ' ' + score.X);      //Update the score
 
 } else if (
     (gameOutcome[0] === 'O' && gameOutcome[1] === 'O' && gameOutcome[2] === 'O')||
@@ -106,13 +106,14 @@ if (
     (gameOutcome[2] === 'O' && gameOutcome[5] === 'O' && gameOutcome[8] ==='O')||
     (gameOutcome[2] === 'O' && gameOutcome[4] === 'O' && gameOutcome[6] ==='O')
 ) {
-          score.O += 1;
-          if (score.O === 3) {
-            window.alert(`${playerTwoName} wins the match, press New Game to play again`);
+      score.O += 1;
+      if (score.O === 3) {
+          window.alert(`${playerTwoName} wins the match, press New Game to play again`);
           }; ////Alert Box
-          $('#O').html(playerTwoName + ' ' + score.O);      //Update the score
 
-}
+      $('#O').html(playerTwoName + ' ' + score.O);      //Update the score
+
+    }
 };
 
 

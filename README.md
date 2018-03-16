@@ -10,7 +10,7 @@ horizontal, vertical, or diagonal row wins the game.
 
 ## Motivation
 
-This game is the first project in Web developer Immersive at General Assembly Sydney.
+This game is the first project in Web Development Immersive at General Assembly Sydney.
 
 ## Prerequisites
 
