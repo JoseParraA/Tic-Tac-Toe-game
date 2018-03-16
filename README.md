@@ -4,16 +4,21 @@
 
 ## Tic Tac Toe
 
-Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a paper-and-pencil game for two players, X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, vertical, or diagonal row wins the game.
+Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a paper-and-pencil game for two players, X and O,
+ who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a
+horizontal, vertical, or diagonal row wins the game.
 
+## Motivation
 
-### Prerequisites
+This game is the first project in Web developer Immersive at General Assembly Sydney.
+
+## Prerequisites
 
 Atom
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+
 
 ## Built With
 

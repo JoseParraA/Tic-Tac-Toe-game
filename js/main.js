@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
+//////////////////////////////////////////////////////Change the name///////////
   let playerOneName = "Player X"
   let playerTwoName = "Player O"
-
 
     $('#xSubmit').on('click', function() {   //Add Name to X Player
     playerOneName = $('#nameX').val()
@@ -12,6 +12,8 @@ $(document).ready(function() {
     playerTwoName = $('#nameY').val()
     $('#O').html(playerTwoName + ' ' + score.X);
     });
+
+////////////////////////////////////////////////////////////////variables//////
 
 let score = {         //Keep the score during the macth
   X: 0,
@@ -30,10 +32,10 @@ let winCombinations = [
 ];
 let playerTurn = '';
 let turn = 0;
-gameOver = false;
+let gameOver = false;
 
 
-//////////////////////////////////////////////////////////// PLAYER TURN//////////////////////////////////////////
+//////////////////////////////////////////////////////////// PLAYER TURN///////
 function indexNum(num, choosenSquare){
 
   if (turn % 2 === 0) {             //Change turn every time one square is taken
@@ -45,75 +47,76 @@ function indexNum(num, choosenSquare){
     console.log('Player 2');
   }
 
-/////////////////////////////////////////////////STORE THE INDEX IN THE ARRAY//////////////////
+/////////////////////////////////////////////STORE THE INDEX IN THE ARRAY//////
 
   gameOutcome.splice(num, 1, playerTurn) //Add a X or an O in the empty array
   console.log(gameOutcome)
-  choosenSquare.text(playerTurn)         //Add a X or an O inthe variable playerTurn
+  choosenSquare.text(playerTurn)     //Add a X or an O inthe variable playerTurn
   turn +=1
 
 }
 
 
-/////////////////////////////////////////////////////////////PLAY GAME/////////////////////////
+////////////////////////////////////////////////////////PLAY GAME///////////////
 
 
 let playGame = function () {
   if (gameOver === false ) { //Check that game over is false first
     let num = parseInt(this.id);   //Change the string into a number
     let choosenSquare = $(this)     //Give choosenSquare same value to exprt outside of the function
-    console.log(choosenSquare);
     if (gameOutcome[num] ==='X' || gameOutcome[num] === 'O') {     //Check if thr square is already taken
       console.log('this position is taken');
       return
     }
-
     console.log(num);
     indexNum(num, choosenSquare)
     winner();
   }
 };
-////////////////////////////////////////////////////////////Click on any square///////
+//////////////////////////////////////////////////////Click on any square///////
 
 $('.square').on('click', playGame);
 
 ///////////////////////////////////////////////////////////Check for a winner
 const winner = function () {
 if (
-      (gameOutcome[0] === 'X' && gameOutcome[1] === 'X' && gameOutcome[2] === 'X')||
-      (gameOutcome[3] === 'X' && gameOutcome[4] === 'X' && gameOutcome[5] ==='X')||
-      (gameOutcome[6] === 'X' && gameOutcome[7] === 'X' && gameOutcome[8] ==='X')||
-      (gameOutcome[0] === 'X' && gameOutcome[4] === 'X' && gameOutcome[8] ==='X')||
-      (gameOutcome[0] === 'X' && gameOutcome[3] === 'X' && gameOutcome[6] ==='X')||
-      (gameOutcome[1] === 'X' && gameOutcome[4] === 'X' && gameOutcome[7] ==='X')||
-      (gameOutcome[2] === 'X' && gameOutcome[5] === 'X' && gameOutcome[8] ==='X')||
-      (gameOutcome[2] === 'X' && gameOutcome[4] === 'X' && gameOutcome[6] ==='X')
+    (gameOutcome[0] === 'X' && gameOutcome[1] === 'X' && gameOutcome[2] === 'X')||
+    (gameOutcome[3] === 'X' && gameOutcome[4] === 'X' && gameOutcome[5] ==='X')||
+    (gameOutcome[6] === 'X' && gameOutcome[7] === 'X' && gameOutcome[8] ==='X')||
+    (gameOutcome[0] === 'X' && gameOutcome[4] === 'X' && gameOutcome[8] ==='X')||
+    (gameOutcome[0] === 'X' && gameOutcome[3] === 'X' && gameOutcome[6] ==='X')||
+    (gameOutcome[1] === 'X' && gameOutcome[4] === 'X' && gameOutcome[7] ==='X')||
+    (gameOutcome[2] === 'X' && gameOutcome[5] === 'X' && gameOutcome[8] ==='X')||
+    (gameOutcome[2] === 'X' && gameOutcome[4] === 'X' && gameOutcome[6] ==='X')
 ) {
-          console.log('Player 1 win!');
           score.X += 1;
+          if (score.X === 3) {
+              window.alert(`${playerOneName} wins the match, press New Game to play again`);
+              };////Alert Box
+
           $('#X').html(playerOneName + ' ' + score.X);      //Update the score
-          console.log(score);
-          gameOver = true;
+
 } else if (
-      (gameOutcome[0] === 'O' && gameOutcome[1] === 'O' && gameOutcome[2] === 'O')||
-      (gameOutcome[3] === 'O' && gameOutcome[4] === 'O' && gameOutcome[5] ==='O')||
-      (gameOutcome[6] === 'O' && gameOutcome[7] === 'O' && gameOutcome[8] ==='O')||
-      (gameOutcome[0] === 'O' && gameOutcome[4] === 'O' && gameOutcome[8] ==='O')||
-      (gameOutcome[0] === 'O' && gameOutcome[3] === 'O' && gameOutcome[6] ==='O')||
-      (gameOutcome[1] === 'O' && gameOutcome[4] === 'O' && gameOutcome[7] ==='O')||
-      (gameOutcome[2] === 'O' && gameOutcome[5] === 'O' && gameOutcome[8] ==='O')||
-      (gameOutcome[2] === 'O' && gameOutcome[4] === 'O' && gameOutcome[6] ==='O')
+    (gameOutcome[0] === 'O' && gameOutcome[1] === 'O' && gameOutcome[2] === 'O')||
+    (gameOutcome[3] === 'O' && gameOutcome[4] === 'O' && gameOutcome[5] ==='O')||
+    (gameOutcome[6] === 'O' && gameOutcome[7] === 'O' && gameOutcome[8] ==='O')||
+    (gameOutcome[0] === 'O' && gameOutcome[4] === 'O' && gameOutcome[8] ==='O')||
+    (gameOutcome[0] === 'O' && gameOutcome[3] === 'O' && gameOutcome[6] ==='O')||
+    (gameOutcome[1] === 'O' && gameOutcome[4] === 'O' && gameOutcome[7] ==='O')||
+    (gameOutcome[2] === 'O' && gameOutcome[5] === 'O' && gameOutcome[8] ==='O')||
+    (gameOutcome[2] === 'O' && gameOutcome[4] === 'O' && gameOutcome[6] ==='O')
 ) {
-          console.log('Player 2 win!');
           score.O += 1;
-          $('#O').html(playerTwoName + ' ' + score.O);       //Update the score
-          console.log(score);
-          gameOver = true;
+          if (score.O === 3) {
+            window.alert(`${playerTwoName} wins the match, press New Game to play again`);
+          }; ////Alert Box
+          $('#O').html(playerTwoName + ' ' + score.O);      //Update the score
+
 }
 };
 
 
-///////////////////////////////////////RESET THE GAME WHEN SOMEONE PRESS BUTTON RESTART//////////////////
+////////////////////////RESET THE GAME WHEN SOMEONE PRESS BUTTON RESTART///////
 
 let nextRound = function () {
   turn = 0;
@@ -126,7 +129,7 @@ let nextRound = function () {
 $('.restart').on('click',nextRound)
 
 
-/////////////////////////////////////////////////////////////////NEW GAME BUTTON////////
+/////////////////////////////////////////////////////////NEW GAME BUTTON////////
 
 let newGame = function () {
   turn = 0;
@@ -134,42 +137,24 @@ let newGame = function () {
   gameOver = false;
   score = {
     X: 0,
-    O: 0
-  };
+    O: 0 };
   $('.square').text('');
   $('#X').html('Player X: ' + score.X);
   $('#O').html('Player O: ' + score.O);
-
-
 }
 $('.newGame').on('click',newGame)
 
+//////////////////////////////////////////////////////////DISABLE BUTTON//////
+
+
+
+// function undisableBtn() {
+//     document.getElementById("restart").disabled = false;
+// }
+
+
+
+
+
+
 });
-
-
-
-
-// PLAYER TURN//////////////////////////////////////////
-
-// const newTurn = function (turn) {
-//   if (turn % 2 === 0) {
-//     playerTurn = 'O';
-//
-//     console.log('Player 2');
-//   } else if (turn % 2 !== 0) {
-//     playerTurn = 'X';    //Player 1 goes
-//
-//     console.log('Player 1');
-//   }
-//   return turn += 1
-//   console.log('we are on turn number ' +turn);
-//   console.log(playerTurn);
-// };
-//
-// ////CHOOSE THE MOVEMENT/////////////////////////////////////////
-//
-// $("html").click(function () {    /////CLICK ANYWHERE ON THE SCREEN
-  // turn = newTurn(turn)
-// });
-
-////////////////////////////////////////////////////////TEST//////

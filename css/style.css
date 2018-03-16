@@ -10,6 +10,13 @@ h1 {
   text-decoration: underline;
   text-shadow: 2px 2px 8px #022F00;
 }
+h2 {
+  text-align: center;
+}
+p {
+  text-align: center;
+
+}
 
 .row {
   height: 100px;
@@ -47,9 +54,10 @@ button {
 }
 
 .playerX, .playerO {
-  font-size: 20px;
-  padding-left: 10px;
+  font-size: 24px;
+  padding-left: 5px;
   display: inline-block;
+  font-family: 'Fjalla One', sans-serif;
 }
 .score {
   margin-left :50px;
