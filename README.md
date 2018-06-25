@@ -1,7 +1,7 @@
 # Project 0
 
 [Tic Tac Toe](https://joseparraa.github.io/project0/)
-
+<img src="home.png">
 ## Tic Tac Toe
 
 Tic-tac-toe (also known as noughts and crosses or Xs and Os) is a paper-and-pencil game for two players, X and O,
