@@ -1,6 +1,11 @@
 body{
   background-color: #006927;
+  margin: auto;
+}
 
+header {
+  padding: 10px;
+  margin-top: 0;
 }
 
 h1 {
@@ -39,7 +44,6 @@ p {
 
 }
 .game {
- padding-left: 10px;
 }
 button {
   color: white;
@@ -60,8 +64,7 @@ button {
   font-family: 'Fjalla One', sans-serif;
 }
 .score {
-  margin-left :50px;
-  margin-right: 50px;
-  height: 10px;
+  height: 80px;
+  padding-left: 20px;
   justify-content: space-between;
 }
