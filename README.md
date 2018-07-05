@@ -17,10 +17,6 @@ This game is the first project in Web Development Immersive at General Assembly 
 
 Atom
 
-## Deployment
-
-
-
 ## Built With
 
 * HTML.
